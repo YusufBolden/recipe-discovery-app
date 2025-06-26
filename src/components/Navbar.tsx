@@ -15,7 +15,7 @@ export const Navbar = () => {
 
   return (
     <nav className="bg-blue-300 text-white px-4 py-3 flex flex-col sm:flex-row sm:justify-between items-center gap-4">
-      <Link to="/" className="text-xl font-bold hover:underline">
+      <Link to="/" className="text-xl font-bold hover:underline hover:text-green-200">
         Recipe Finder
       </Link>
       <form onSubmit={handleSubmit} className="flex items-center gap-2">
@@ -33,7 +33,7 @@ export const Navbar = () => {
           Search
         </button>
       </form>
-      <Link to="/favorites" className="font-bold text-xl hover:underline">
+      <Link to="/favorites" className="font-bold text-xl hover:underline hover:text-green-200">
         Favorites
       </Link>
     </nav>
