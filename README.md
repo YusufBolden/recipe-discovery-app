@@ -71,11 +71,25 @@ src/
 │   └── SearchResultsPage.tsx
 ├── types/
 │   └── index.ts
+├── assets/
+│   ├── favorites.png
+│   ├── recipeCategory.png
+│   └── recipeHome.png
 ├── App.tsx
 ├── main.tsx
 └── index.css
 ```
 ---
+## 📸 Previews
+
+### Home Page
+<img src="./src/assets/recipeHome.png" width="500" />
+
+### Category Page
+<img src="./src/assets/recipeCategory.png" width="500" />
+
+### Favorites Page
+<img src="./src/assets/favorites.png" width="500" />
 
 ## 🐞 Common Errors & Resolutions
 
