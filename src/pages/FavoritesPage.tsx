@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useFavorites } from '../context/FavoritesContext';
 import { RecipeCard } from '../components/RecipeCard';
-import type { Meal } from "../types/index";
+import { Spinner } from '../components/Spinner';
+import type { Meal } from "../types";
 
 export const FavoritesPage = () => {
   const { favorites } = useFavorites();
@@ -23,7 +24,7 @@ export const FavoritesPage = () => {
         if (err instanceof Error) {
           setError(err.message);
         } else {
-          setError('Failed to load favorites.');
+          setError('Failed to load favorites');
         }
       } finally {
         setLoading(false);
@@ -37,7 +38,7 @@ export const FavoritesPage = () => {
     }
   }, [favorites]);
 
-  if (loading) return <p className="text-center py-4">Loading favorites...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p className="text-red-500 text-center py-4">{error}</p>;
   if (favorites.length === 0) return <p className="text-center py-4">You have no favorites yet.</p>;
 

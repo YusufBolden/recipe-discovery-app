@@ -1,5 +1,6 @@
 import { useFetch } from '../hooks/useFetch';
 import { Link } from 'react-router-dom';
+import { Spinner } from '../components/Spinner';
 import type { CategoriesResponse } from '../types';
 
 
@@ -14,7 +15,7 @@ export const HomePage = () => {
     category => !BLOCKED_CATEGORIES.includes(category.strCategory)
   ) || [];
 
-  if (loading) return <p className="text-center py-4">Loading categories...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p className="text-red-500 text-center py-4">{error}</p>;
 
   return (

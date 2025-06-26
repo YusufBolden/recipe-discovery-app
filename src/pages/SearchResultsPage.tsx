@@ -1,8 +1,12 @@
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { RecipeCard } from '../components/RecipeCard';
-import type { Meal, SearchResponse } from '../types';
+import { Spinner } from '../components/Spinner';
+import type { Meal } from '../types';
 
+type SearchResponse = {
+  meals: Meal[] | null;
+};
 
 export const SearchResultsPage = () => {
   const location = useLocation();
@@ -50,7 +54,7 @@ export const SearchResultsPage = () => {
     fetchResults();
   }, [query]);
 
-  if (loading) return <p className="text-center py-4">Searching...</p>;
+  if (loading) return <Spinner />;
   if (error) return <p className="text-red-500 text-center py-4">{error}</p>;
   if (!query.trim()) return <p className="text-center py-4">Enter a search term.</p>;
   if (notFound) return <p className="text-center py-4">No results found for "{query}".</p>;
