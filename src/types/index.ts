@@ -47,13 +47,10 @@ export type RecipeCardProps = {
   image: string;
 };
 
-export type Category = {
-  idCategory: string;
-  strCategory: string;
-  strCategoryThumb: string;
-  strCategoryDescription: string;
+export type CategoriesResponse = {
+  categories: MealCategory[];
 };
 
-export type CategoriesResponse = {
-  categories: Category[];
+export type SearchResponse = {
+  meals: Meal[] | null;
 };
