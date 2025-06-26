@@ -1,13 +1,22 @@
-// import { useState } from 'react'
-import './index.css'
+import { Routes, Route } from 'react-router-dom';
+import { HomePage } from './pages/HomePage';
+import { CategoryPage } from './pages/CategoryPage';
+import { RecipeDetailPage } from './pages/RecipeDetailPage';
+import { FavoritesPage } from './pages/FavoritesPage';
+import { SearchResultsPage } from './pages/SearchResultsPage';
+import { Navbar } from './components/Navbar';
 
-function App() {
-
+export const App = () => {
   return (
     <>
-      <h1 className='text-2xl font-bold mt-4 text-center'>Recipe Discovery App</h1>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/category/:categoryName" element={<CategoryPage />} />
+        <Route path="/recipe/:recipeId" element={<RecipeDetailPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/search" element={<SearchResultsPage />} />
+      </Routes>
     </>
-  )
-}
-
-export default App
+  );
+};
