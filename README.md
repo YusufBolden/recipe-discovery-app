@@ -10,7 +10,7 @@ A simple recipe discovery app built with **React**, **TypeScript**, **Tailwind C
 ---
 ## 🚀 Live Deployment
 
-[Try it on GitHub Pages!](https://yusufbolden.github.io/recipe-discovery-app/)
+[Try it on GitHub Pages!](https://yusufbolden.github.io/recipe-discovery-app/){:target="_blank"}
 
 
 ---
