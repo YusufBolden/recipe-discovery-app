@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useFavorites } from '../context/FavoritesContext';
+import { useFavorites } from '../context/useFavorites';
 import { RecipeCard } from '../components/RecipeCard';
 import { Spinner } from '../components/Spinner';
 import type { Meal } from "../types";

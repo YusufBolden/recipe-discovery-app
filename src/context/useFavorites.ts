@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import type { FavoritesContextType } from '../types/index';
 import { FavoritesContext } from './FavoritesContext';
+import type { FavoritesContextType } from '../types';
 
 export const useFavorites = (): FavoritesContextType => {
   const context = useContext(FavoritesContext);
   if (!context) {
-    throw new Error('useFavorites must be used within a FavoritesProvider');
+    throw new Error('useFavorites must be used within FavoritesProvider');
   }
   return context;
 };

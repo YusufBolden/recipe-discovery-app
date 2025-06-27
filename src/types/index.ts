@@ -25,8 +25,8 @@ export interface MealDetail {
 
 export type FavoritesContextType = {
   favorites: string[];
-  add: (id: string) => void;
-  remove: (id: string) => void;
+  addFavorite: (id: string) => void;
+  removeFavorite: (id: string) => void;
   isFavorite: (id: string) => boolean;
 };
 
