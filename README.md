@@ -8,6 +8,12 @@ A simple recipe discovery app built with **React**, **TypeScript**, **Tailwind C
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
 ---
+## 🚀 Live Deployment
+
+[Try it on GitHub Pages!](https://yusufbolden.github.io/recipe-discovery-app/)
+
+
+---
 ## 🚀 Local Setup & Tailwind CSS Installation
 
 To set up and run this project locally with Tailwind CSS and Vite:
@@ -59,7 +65,9 @@ src/
 │   ├── RecipeCard.tsx
 │   └── Spinner.tsx
 ├── context/
-│   └── FavoritesContext.tsx
+|   ├── FavoritesContext.tsx
+│   ├── FavoritesProvider.tsx
+│   └── useFavorites.ts
 ├── hooks/
 │   ├── useFetch.ts
 │   └── useLocalStorage.ts
@@ -117,6 +125,30 @@ src/
 8. `Spinner` and `ErrorMessage` not rendering
   - Confirmed components were used inside all loading/error conditionals
 
+9. Fast Refresh error in `FavoritesContext`
+
+  - Split `FavoritesContext` and `useFavorites` into separate files to comply with ESLint rules on exports.
+
+10. TypeScript error: Object literal may only specify known properties (add/remove)
+
+  - Ensured context interface properties match exactly with provider value properties (add and remove instead of addFavorite and removeFavorite).
+
+11. `useFavorites` not exported from FavoritesContext
+
+  - Exported `useFavorites` hook from a dedicated file and updated all imports accordingly.
+
+12. Implicit 'any' type warnings in callbacks
+
+  - Added explicit type annotations for function parameters (e.g., id: string, fav: string, r: any).
+
+13. LocalStorage usage missing useEffect for synchronization
+
+  - Added useEffect to synchronize storedValue changes with localStorage.
+
+14. ESLint no-unused-expressions warning in toggleFavorite
+
+  - Replaced ternary operator with an explicit if/else block to ensure clear side effects.
+
 ---
 
 ## 🧠 Reflection
@@ -129,6 +161,8 @@ Another key difficulty was managing global state for the user’s favorite recip
 
 Ternary expressions inside functions triggered ESLint errors, specifically when used for side effects (e.g., adding/removing favorites). I resolved this by replacing ternary expressions with clean if/else blocks, which also made the logic more readable and maintainable.
 
+During development, managing the React Context with TypeScript and ensuring proper Fast Refresh behavior was a major challenge. The ESLint rule requiring files to export only components forced us to split the Favorites context and hook into separate files. I also tackled persistent TypeScript typing issues around state updater functions by explicitly defining callback parameter types. These issues were resolved through careful interface alignment and refactoring, improving both type safety and developer experience. Additionally, syncing localStorage with state using useEffect helped maintain persistent favorites without stale data.
+
 ### 🧩 Design decisions and how they shaped the project
 
 To simplify data fetching and avoid repetitive logic, I created a generic `useFetch` hook. It takes care of the loading, error, and data states so I don’t have to write the same code on every page. All are kept neatly in one place, and supports custom types via TypeScript generics. This made each page cleaner and easier to debug.
@@ -137,8 +171,9 @@ I used `useLocalStorage` as a custom hook to sync favorites with `localStorage` 
 
 Routing was structured using React Router dynamic routes (/category/:name, /recipe/:id, /search?query) so the page links are clear and easy to understand. This also helps users know what to expect when clicking or sharing a link. Each route loads only what it needs, keeping pages fast and easy to use. Components like `RecipeCard` were designed to be reusable across `categories`, `favorites`, and search results with a consistent prop shape.
 
----
+I switched from BrowserRouter to HashRouter to ensure the app works smoothly when deployed on GitHub Pages, which does not support dynamic server-side routing. HashRouter uses URL hashes to manage client-side routes, preventing 404 errors on page refresh or direct URL access. This choice simplifies deployment without needing additional server configuration.
 
+---
 
 ## 🧑🏿‍💻 Author
 
